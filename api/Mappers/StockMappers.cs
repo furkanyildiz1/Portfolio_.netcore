@@ -13,14 +13,14 @@ namespace api.Mappers
         {
             return new StockDto
             {
+                //istenmeyen kırpılır
                 Id = stockModel.Id,
                 Symbol = stockModel.Symbol,
                 CompanyName = stockModel.CompanyName,
                 Purchase = stockModel.Purchase,
                 LastDiv = stockModel.LastDiv,
                 Industry = stockModel.Industry,
-                MarketCap = stockModel.MarketCap,
-                Comments = stockModel.Comments.Select(c => c.ToCommentDto()).ToList()
+                MarketCap = stockModel.MarketCap
             };
         }
 
@@ -28,6 +28,7 @@ namespace api.Mappers
         {
             return new Stock
             {
+                //istenmeyen kırpılır
                 Symbol = stockDto.Symbol,
                 CompanyName = stockDto.CompanyName,
                 Purchase = stockDto.Purchase,
@@ -36,18 +37,6 @@ namespace api.Mappers
                 MarketCap = stockDto.MarketCap
             };
         }
-
-        public static Stock ToStockFromFMP(this FMPStock fmpStock)
-        {
-            return new Stock
-            {
-                Symbol = fmpStock.symbol,
-                CompanyName = fmpStock.companyName,
-                Purchase = (decimal)fmpStock.price,
-                LastDiv = (decimal)fmpStock.lastDiv,
-                Industry = fmpStock.industry,
-                MarketCap = fmpStock.mktCap
-            };
-        }
+        
     }
 }
