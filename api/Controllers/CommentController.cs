@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Interfaces;
+using api.Mappers;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,12 +14,21 @@ namespace api.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
+        
+        private readonly ICommentRepository _commentRepo;
+        
+        public CommentController( ICommentRepository commentRepo)
+        { 
+            _commentRepo = commentRepo;
+        }
 
-        private readonly ApplicaitonDBContext _context;
-
-        public CommentController(ApplicaitonDBContext context)
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
-            _context = context;
+            var comments = await _commentRepo.GetAllAsync();
+            
+            var commentDto = comments.Select(s => s.ToCommentDto());
+            return Ok(commentDto);
         }
         
     }
