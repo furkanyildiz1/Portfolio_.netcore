@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Comment;
 
 namespace api.Dtos.Stock
 {
@@ -22,6 +23,10 @@ namespace api.Dtos.Stock
         public long MarketCap { get; set; }
 
         //şuanlık yorumları göremk istemiyorum.
+
+        //yorumları göremk için bağlayacağım
+        
+        public List<CommentDto> Comments { get; set; } = new List<CommentDto>();
 
         
     }

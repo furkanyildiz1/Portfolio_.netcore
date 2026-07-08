@@ -1,14 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import React from "react";
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 
 type Props = {
   data: any;

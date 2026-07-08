@@ -20,8 +20,12 @@ const StockComment = ({ stockSymbol }: Props) => {
   const [loading, setLoading] = useState<boolean>();
 
   useEffect(() => {
-    getComments();
-  }, []);
+    setLoading(true);
+    commentGetAPI(stockSymbol).then((res) => {
+      setLoading(false);
+      setComment(res?.data!);
+    });
+  }, [stockSymbol]);
 
   const handleComment = (e: CommentFormInputs) => {
     commentPostAPI(e.title, e.content, stockSymbol)

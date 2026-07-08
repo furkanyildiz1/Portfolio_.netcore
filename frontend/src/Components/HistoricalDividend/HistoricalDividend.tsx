@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { getHistoricalDividend } from "../../api";
-import Spinner from "../Spinners/Spinner";
 import SimpleLineChart from "../SimpleLineChart/SimpleLineChart";
 import { Dividend } from "../../company";
 
@@ -10,7 +9,7 @@ type Props = {};
 const HistoricalDividend = (props: Props) => {
   const ticker = useOutletContext<string>();
   const [dividend, setDividend] = useState<Dividend[]>();
-  useState<boolean>(false);
+  // Removed stray useState<boolean>(false);
   useEffect(() => {
     const fetchHistoricalDividend = async () => {
       const value = await getHistoricalDividend(ticker);
@@ -23,7 +22,7 @@ const HistoricalDividend = (props: Props) => {
       );
     };
     fetchHistoricalDividend();
-  }, []);
+  }, [ticker]);
   return (
     <>
       {dividend && dividend.length > 0 && dividend !== undefined ? (
