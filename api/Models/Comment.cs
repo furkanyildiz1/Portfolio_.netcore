@@ -13,7 +13,7 @@ namespace api.Models
 
         public string Content { get; set; } = string.Empty;
 
-        public string Title { get; set; } =string.Empty;
+        public string Title { get; set; } = string.Empty;
 
         public DateTime CreatedOn { get; set; } = DateTime.Now;
 
@@ -21,6 +21,10 @@ namespace api.Models
         public int? StockId { get; set; }
 
         //navigtion gezinme propertysi modeller içinde geinmeyi sağlr
-        public Stock? Stock{ get; set; }
+        public Stock? Stock { get; set; }
+
+        //bire bir ilişkide yorum atan kişnmin ismi gözüksün diye
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }
